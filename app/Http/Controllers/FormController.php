@@ -92,14 +92,14 @@ class FormController extends Controller
         $store -> age = $request->age;
         // $store -> img = $request->file('img')->hashName();
         $store -> save();
-        return redirect('/realIndex');
         if( $request->file('img') != null)
-        {
-            Storage::delete('public/img/'. $store->img);
-            Storage::put('public/img/', $request->file('img'));
-            $store->img = $request->file('img')->hashName();
-            $store->save();        
-        }
+            {
+                Storage::delete('public/img/'. $store->img);
+                Storage::put('public/img/', $request->file('img'));
+                $store->img = $request->file('img')->hashName();
+                $store->save();        
+            }
+        return redirect('/realIndex');
     }
 
     /**
